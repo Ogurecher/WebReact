@@ -25,7 +25,11 @@ export class CityInfo extends Component {
     }*/
 
     render() {
-        if (this.props.weather && this.props.loading === 0) {
+        if (this.props.errorMsg) {
+            return (
+                <p> {this.props.errorMsg} </p>
+            );
+        } else if (this.props.weather && this.props.loading === 0) {
             return (
                 <div>
                     <CityLabel />
@@ -50,7 +54,8 @@ function mapStateToProps(state) {
     return {
       position: state.position,
       weather: state.weather,
-      loading: state.loading
+      loading: state.loading,
+      errorMsg: state.errorMsg
     };
 }
 

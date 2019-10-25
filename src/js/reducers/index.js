@@ -4,20 +4,17 @@ const initialState = {
   articles: [],
   weather: null,
   position: {city: null, lat: null, lng: null},
-  loading: 0
+  loading: 0,
+  errorMsg: null
 };
 
 function rootReducer(state = initialState, action) {
-  if (action.type === ADD_ARTICLE) {
-    return Object.assign({}, state, {
-      articles: state.articles.concat(action.payload)
-    });
-  }
 
   if (action.type === LOAD_WEATHER) {
     return Object.assign({}, state, {
       weather: action.payload,
-      loading: 0
+      loading: 0,
+      errorMsg: null
     });
   }
 
@@ -30,6 +27,13 @@ function rootReducer(state = initialState, action) {
   if (action.type === 'LOADING') {
     return Object.assign({}, state, {
       loading: action.payload
+    });
+  }
+
+  if (action.type === 'THROW_ERROR') {
+    return Object.assign({}, state, {
+      errorMsg: action.payload,
+      loading: 0
     });
   }
 
