@@ -3,7 +3,8 @@ import { ADD_ARTICLE, LOAD_WEATHER, SET_LOCATION } from "../constants/action-typ
 const initialState = {
   articles: [],
   weather: null,
-  position: {city: null, lat: null, lng: null}
+  position: {city: null, lat: null, lng: null},
+  loading: 0
 };
 
 function rootReducer(state = initialState, action) {
@@ -15,7 +16,8 @@ function rootReducer(state = initialState, action) {
 
   if (action.type === LOAD_WEATHER) {
     return Object.assign({}, state, {
-      weather: action.payload
+      weather: action.payload,
+      loading: 0
     });
   }
 
@@ -24,6 +26,13 @@ function rootReducer(state = initialState, action) {
       position: action.payload
     });
   }
+
+  if (action.type === 'LOADING') {
+    return Object.assign({}, state, {
+      loading: action.payload
+    });
+  }
+
   return state;
 }
 

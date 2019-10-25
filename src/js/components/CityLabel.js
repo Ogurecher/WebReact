@@ -8,7 +8,6 @@ export class CityLabel extends Component {
     
     render() {
         return (
-            //{this.props.city}
             <p>
                 {this.props.weather.name}
             </p>

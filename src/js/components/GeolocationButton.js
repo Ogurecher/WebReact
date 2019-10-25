@@ -13,6 +13,7 @@ export class GeolocationButton extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.getLocation();
+        console.log("handleSubmit");
     }
 
     render() {
