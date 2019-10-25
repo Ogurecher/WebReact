@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getData } from "../actions/index";
+import { getWeather } from "../actions/index";
 
 export class Post extends Component {
   constructor() {
@@ -8,7 +8,7 @@ export class Post extends Component {
   }
 
   componentDidMount() {
-    this.props.getData();
+    this.props.getWeather("London");
   }
 
   render() {
@@ -16,7 +16,7 @@ export class Post extends Component {
       <ul className="list-group list-group-flush">
         {this.props.articles.map(el => (
           <li className="list-group-item" key={el.id}>
-            {el.title}
+            {el.weather[0].main}
           </li>
         ))}
       </ul>
@@ -32,5 +32,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getWeather }
 )(Post);

@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?appid=2f58b555bf3d607911b0b6c94039442b";

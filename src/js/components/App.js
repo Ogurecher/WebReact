@@ -1,22 +1,12 @@
 import React from "react";
-import List from "./List.js";
-import Form from "./Form.js";
+import GeolocationButton from "./GeolocationButton.js"
+import InputForm from "./InputForm.js"
 import Post from "./Posts.js";
 
 const App = () => (
-  <div className="row mt-5">
-    <div className="col-md-4 offset-md-1">
-      <h2>Articles</h2>
-      <List />
-    </div>
-    <div className="col-md-4 offset-md-1">
-      <h2>Add a new article</h2>
-      <Form />
-    </div>
-    <div className="col-md-4 offset-md-1">
-      <h2>API posts</h2>
-      <Post />
-    </div>
+  <div>
+    <GeolocationButton />
+    <InputForm />
   </div>
 );
 export default App;
