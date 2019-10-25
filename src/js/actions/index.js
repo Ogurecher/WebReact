@@ -1,9 +1,5 @@
-import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR } from '../constants/action-types';
+import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES } from '../constants/action-types';
 import { API_BASE_URL } from '../constants/resources';
-
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload };
-}
 
 export function getLocation() {
   return function(dispatch) {
@@ -41,4 +37,8 @@ export function getWeather(position) {
             dispatch({ type: THROW_ERROR, payload: 'Location not found' });
           });
     };
+}
+
+export function addToFavourites(city) {
+  return {type: ADD_TO_FAVOURITES, payload: city};
 }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { addToFavourites } from "../actions/index";
+import { connect } from "react-redux";
 
-export default class InputForm extends Component {
+export class InputForm extends Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -14,9 +16,10 @@ export default class InputForm extends Component {
     }
 
     handleSubmit(event) {
-        //TODO add to favorites
-        alert(this.state.value);
         event.preventDefault();
+        
+        this.props.addToFavourites(this.state.value);
+        this.setState({value: ''});
     }
 
     render() {
@@ -28,3 +31,14 @@ export default class InputForm extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    { addToFavourites }
+  )(InputForm);
