@@ -39,6 +39,16 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === ADD_TO_FAVOURITES) {
+
+    let favourites;                                                 //NOT IN REDUCER in subscriber? use redux-persist?
+    if (localStorage.getItem('favourites')) {                       //disallow repetitions
+      favourites = localStorage.getItem('favourites').split(',');
+      favourites.push([action.payload]);
+    } else {
+      favourites = action.payload;
+    }
+    localStorage.setItem('favourites', favourites);
+
     return Object.assign({}, state, {
       favourites: state.favourites.concat([action.payload])
     });

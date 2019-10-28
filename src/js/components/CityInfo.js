@@ -45,7 +45,7 @@ export class CityInfo extends Component {
                 </div>
             );
         } else {
-            return(<div />);
+            return(<p>No CityInfo</p>);                 //REMOVE DEBUG MSG
         }
     }
 }

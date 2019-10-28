@@ -16,6 +16,10 @@ export class GeolocationButton extends Component {
         console.log("handleSubmit");
     }
 
+    componentDidMount() {
+        this.props.getLocation();
+    }
+
     render() {
         return (
             <div>
