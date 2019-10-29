@@ -8,6 +8,14 @@ import { LOADING_GIF_URL } from "../constants/resources.js"
 
 export class CityInfo extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.renderError = this.renderError.bind(this);
+        this.renderInfo = this.renderInfo.bind(this);
+        this.renderLoading = this.renderLoading.bind(this);
+    }
+
     componentDidUpdate(prevProps) {
         if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
             console.log('CityInfo updated');
@@ -17,33 +25,38 @@ export class CityInfo extends Component {
         }
     }
     
-    /*renderError(msg) {
-        ReactDOM.render(
-        <p>{msg}</p>
-        ,
-        document.getElementById('weather'));
-    }*/
+    renderError(msg) {
+        return (
+            <p> {msg} </p>
+        );
+    }
+
+    renderInfo() {
+        return (
+            <div>
+                <CityLabel weather={this.props.weather} />
+                <WeatherIcon weather={this.props.weather} />
+                <WeatherList weather={this.props.weather} />
+            </div>
+        );
+    }
+
+    renderLoading() {
+        return (
+            <div>
+                <p> LOADING... </p>
+                <img src={LOADING_GIF_URL} />
+            </div>
+        );
+    }
 
     render() {
         if (this.props.errorMsg) {
-            return (
-                <p> {this.props.errorMsg} </p>
-            );
+            return this.renderError(this.props.errorMsg);
         } else if (this.props.weather && this.props.loading === 0) {
-            return (
-                <div>
-                    <CityLabel />
-                    <WeatherIcon />
-                    <WeatherList />
-                </div>
-            );
+            return this.renderInfo();
         } else if (this.props.loading === 1) {
-            return (
-                <div>
-                    <p> LOADING... </p>
-                    <img src={LOADING_GIF_URL} />
-                </div>
-            );
+            return this.renderLoading();
         } else {
             return(<p>No CityInfo</p>);                 //REMOVE DEBUG MSG
         }
@@ -52,7 +65,6 @@ export class CityInfo extends Component {
 
 function mapStateToProps(state) {
     return {
-      position: state.position,
       weather: state.weather,
       loading: state.loading,
       errorMsg: state.errorMsg

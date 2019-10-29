@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
-export class WeatherIcon extends Component {
+export default class WeatherIcon extends Component {
     constructor(props) {
         super(props);
     }
@@ -12,11 +11,3 @@ export class WeatherIcon extends Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-      weather: state.weather
-    };
-}
-
-export default connect(mapStateToProps)(WeatherIcon);

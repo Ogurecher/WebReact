@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import WeatherListItem from "./WeatherListItem.js"
-import { connect } from "react-redux";
 
-export class WeatherList extends Component {
+export default class WeatherList extends Component {
     constructor(props) {
         super(props);
     }
@@ -19,11 +18,3 @@ export class WeatherList extends Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-      weather: state.weather
-    };
-}
-
-export default connect(mapStateToProps)(WeatherList);

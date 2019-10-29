@@ -25,14 +25,16 @@ export class GeolocationButton extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type='submit' value = 'Get location'/>
                 </form>
-                <CityInfo />
+                <CityInfo position={this.props.position} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        position: state.position
+    };
 }
 
 export default connect(

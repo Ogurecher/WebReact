@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { CityInfo } from "./CityInfo";
+import { connect } from "react-redux";
 
-export default class Favourites extends Component {
+export class Favourites extends Component {
     
     render() {
-        let favourites;
-        if (localStorage.getItem('favourites')) {
-            favourites = localStorage.getItem('favourites').split(',').map((element) =>               //update component on localstorage update
-                <div key={element.toString()}>
-                    <CityInfo />
-                </div>
-            );
-        }
+        const favourites = this.props.favourites.map((element) =>               //disallow dupes
+            <div key={element.toString()}>
+                <CityInfo position={{city: element, lat: null, lng: null}}/>
+            </div>
+        );
         return (
             <div>
                 {favourites}
@@ -19,3 +17,13 @@ export default class Favourites extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        favourites: state.favourites
+    };
+}
+
+export default connect(
+    mapStateToProps
+  )(Favourites);
