@@ -33,9 +33,7 @@ export class InputForm extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-      
-    };
+    return {};
 }
 
 export default connect(

@@ -1,17 +1,30 @@
 import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES } from "../constants/action-types";
 
 const initialState = {
-  articles: [],
   weather: null,
   position: {city: null, lat: null, lng: null},
   loading: 0,
   errorMsg: null,
-  favourites: []
+  favourites: [],
+  cities: []
 };
 
 function rootReducer(state = initialState, action) {
 
   if (action.type === LOAD_WEATHER) {
+    if (action.index) {
+      const cities = state.cities;
+      cities[action.index] = {
+        position: state.cities[action.index].position,
+        weather: action.payload,
+        loading: 0,
+        errorMsg: null
+      }
+      return Object.assign({}, state, {
+        cities: cities
+      });
+    }
+
     return Object.assign({}, state, {
       weather: action.payload,
       loading: 0,
@@ -25,13 +38,40 @@ function rootReducer(state = initialState, action) {
     });
   }
 
-  if (action.type === LOADING) {
+  if (action.type === LOADING) {                       //deal with code copying
+    if (action.index) {
+      const cities = state.cities;
+      cities[action.index] = {
+        position: state.cities[action.index].position,
+        weather: state.cities[action.index].weather,
+        loading: action.payload,
+        errorMsg: state.cities[action.index].errorMsg
+      }
+      return Object.assign({}, state, {
+        cities: cities
+      });
+    }
+
     return Object.assign({}, state, {
       loading: action.payload
     });
   }
 
-  if (action.type === THROW_ERROR) {
+  if (action.type === THROW_ERROR) {                       //deal with code copying
+
+    if (action.index) {
+      const cities = state.cities;
+      cities[action.index] = {
+        position: state.cities[action.index].position,
+        weather: state.cities[action.index].weather,
+        loading: 0,
+        errorMsg: action.payload
+      }
+      return Object.assign({}, state, {
+        cities: cities
+      });
+    }
+
     return Object.assign({}, state, {
       errorMsg: action.payload,
       loading: 0
@@ -50,7 +90,8 @@ function rootReducer(state = initialState, action) {
     localStorage.setItem('favourites', favourites);*/
 
     return Object.assign({}, state, {
-      favourites: state.favourites.concat([action.payload])
+      favourites: state.favourites.concat([action.payload]),
+      cities: state.cities.concat({position: {city: action.payload, lat: null, lng: null}, weather: null, loading: 0, errorMsg: null })
     });
   }
 

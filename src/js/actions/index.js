@@ -13,9 +13,9 @@ export function getLocation() {
   }
 }
 
-export function getWeather(position) {
+export function getWeather(position, index) {
     return function(dispatch) {
-      dispatch({ type: LOADING, payload: 1 });
+      dispatch({ type: LOADING, payload: 1, index: index });
       let url;
       if (position.city) {
         url = API_BASE_URL + '&q=' + position.city;
@@ -30,11 +30,11 @@ export function getWeather(position) {
             return response.json();
           })
           .then(json => {
-            dispatch({ type: LOAD_WEATHER, payload: json });
+            dispatch({ type: LOAD_WEATHER, payload: json, index: index });
           })
           .catch(error => {
             console.log("ERROR!!!!!");
-            dispatch({ type: THROW_ERROR, payload: 'Location not found' });
+            dispatch({ type: THROW_ERROR, payload: 'Location not found', index: index });
           });
     };
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getLocation } from "../actions/index";
-import CityInfo from "./CityInfo.js"
 
 export class GeolocationButton extends Component {
     constructor(props) {
@@ -25,7 +24,7 @@ export class GeolocationButton extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type='submit' value = 'Get location'/>
                 </form>
-                <CityInfo position={this.props.position} />
+                
             </div>
         );
     }

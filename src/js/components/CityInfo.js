@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import CityLabel from "./CityLabel.js";
 import WeatherIcon from "./WeatherIcon.js";
 import WeatherList from "./WeatherList.js";
-import { getWeather } from "../actions/index";
-import { connect } from "react-redux";
+/*import { getWeather } from "../actions/index";
+import { connect } from "react-redux";*/
 import { LOADING_GIF_URL } from "../constants/resources.js"
 
-export class CityInfo extends Component {
+export default class CityInfo extends Component {
 
     constructor(props) {
         super(props);
@@ -16,14 +16,11 @@ export class CityInfo extends Component {
         this.renderLoading = this.renderLoading.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
+    /*componentDidUpdate(prevProps) {
         if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
-            console.log('CityInfo updated');
-            console.log(prevProps);
-            console.log(this.props);
             this.props.getWeather(this.props.position);
         }
-    }
+    }*/
     
     renderError(msg) {
         return (
@@ -34,9 +31,9 @@ export class CityInfo extends Component {
     renderInfo() {
         return (
             <div>
-                <CityLabel weather={this.props.weather} />
-                <WeatherIcon weather={this.props.weather} />
-                <WeatherList weather={this.props.weather} />
+                <CityLabel weather={this.props.city.weather} />
+                <WeatherIcon weather={this.props.city.weather} />
+                <WeatherList weather={this.props.city.weather} />
             </div>
         );
     }
@@ -51,27 +48,14 @@ export class CityInfo extends Component {
     }
 
     render() {
-        if (this.props.errorMsg) {
-            return this.renderError(this.props.errorMsg);
-        } else if (this.props.weather && this.props.loading === 0) {
+        if (this.props.city.errorMsg) {
+            return this.renderError(this.props.city.errorMsg);
+        } else if (this.props.city.weather && this.props.city.loading === 0) {
             return this.renderInfo();
-        } else if (this.props.loading === 1) {
+        } else if (this.props.city.loading === 1) {
             return this.renderLoading();
         } else {
             return(<p>No CityInfo</p>);                 //REMOVE DEBUG MSG
         }
     }
 }
-
-function mapStateToProps(state) {
-    return {
-      weather: state.weather,
-      loading: state.loading,
-      errorMsg: state.errorMsg
-    };
-}
-
-export default connect(
-    mapStateToProps,
-    { getWeather }
-  )(CityInfo);

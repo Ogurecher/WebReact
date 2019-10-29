@@ -1,13 +1,58 @@
-import React from "react";
+import React, { Component } from "react";
 import GeolocationButton from "./GeolocationButton.js"
 import InputForm from "./InputForm.js"
 import Favourites from "./Favourites.js";
+import CityInfo from './CityInfo';
+import { connect } from "react-redux";
+import { getWeather } from "../actions/index";
 
-const App = () => (
-  <div>
-    <GeolocationButton />
-    <InputForm />
-    <Favourites />
-  </div>
-);
-export default App;
+export class App extends Component {
+
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
+      this.props.getWeather(this.props.position, null);
+    }
+    //add getweather for all cities
+    for (let i = 0; i < this.props.cities.length; i++) {
+      if (JSON.stringify(this.props.cities[i]) !== JSON.stringify(prevProps.cities[i])) {  //may cause problems if cities[i] does not exist in prevprops
+        this.props.getWeather(this.props.cities[i].position, i);
+      }
+    }
+  }
+
+  componentDidMount() {
+    //add getweather for all cities
+    for (let i = 0; i < this.props.cities.length; i++) {
+      //if (JSON.stringify(this.props.cities[i].position) !== JSON.stringify(prevProps.cities[i].position)) {  //may cause problems if cities[i] does not exist in prevprops
+        this.props.getWeather(this.props.cities[i].position, i);
+      //}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <GeolocationButton />
+        <CityInfo city={{weather: this.props.weather, loading: this.props.loading, errorMsg: this.props.errorMsg}} />
+        <InputForm />
+        <Favourites cities={this.props.cities} />
+      </div>
+    );
+  }
+}
+
+
+function mapStateToProps(state) {
+  return {
+    position: state.position,
+    weather: state.weather,
+    loading: state.loading,
+    errorMsg: state.errorMsg,
+    cities: state.cities
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { getWeather }
+)(App);
