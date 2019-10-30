@@ -8,24 +8,22 @@ import { getWeather } from "../actions/index";
 
 export class App extends Component {
 
+  componentDidMount() {
+    //add getweather for all cities
+    for (let i = 0; i < this.props.cities.length; i++) {
+      this.props.getWeather(this.props.cities[i].position, i);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
       this.props.getWeather(this.props.position, null);
     }
     //add getweather for all cities
     for (let i = 0; i < this.props.cities.length; i++) {
-      if (JSON.stringify(this.props.cities[i]) !== JSON.stringify(prevProps.cities[i])) {  //may cause problems if cities[i] does not exist in prevprops
+      if (!prevProps.cities[i] || JSON.stringify(this.props.cities[i].weather) !== JSON.stringify(prevProps.cities[i].weather)) {  //may cause problems if cities[i] does not exist in prevprops
         this.props.getWeather(this.props.cities[i].position, i);
       }
-    }
-  }
-
-  componentDidMount() {
-    //add getweather for all cities
-    for (let i = 0; i < this.props.cities.length; i++) {
-      //if (JSON.stringify(this.props.cities[i].position) !== JSON.stringify(prevProps.cities[i].position)) {  //may cause problems if cities[i] does not exist in prevprops
-        this.props.getWeather(this.props.cities[i].position, i);
-      //}
     }
   }
 

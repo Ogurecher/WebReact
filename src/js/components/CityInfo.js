@@ -5,6 +5,7 @@ import WeatherList from "./WeatherList.js";
 /*import { getWeather } from "../actions/index";
 import { connect } from "react-redux";*/
 import { LOADING_GIF_URL } from "../constants/resources.js"
+import CloseButton from "./CloseButton.js";
 
 export default class CityInfo extends Component {
 
@@ -24,7 +25,10 @@ export default class CityInfo extends Component {
     
     renderError(msg) {
         return (
-            <p> {msg} </p>
+            <div>
+                <p> {msg} </p>
+                <CloseButton city={this.props.city} />
+            </div>
         );
     }
 
@@ -33,6 +37,7 @@ export default class CityInfo extends Component {
             <div>
                 <CityLabel weather={this.props.city.weather} />
                 <WeatherIcon weather={this.props.city.weather} />
+                <CloseButton city={this.props.city} />
                 <WeatherList weather={this.props.city.weather} />
             </div>
         );

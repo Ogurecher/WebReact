@@ -1,4 +1,4 @@
-import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES } from '../constants/action-types';
+import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES, REMOVE_FROM_FAVOURITES } from '../constants/action-types';
 import { API_BASE_URL } from '../constants/resources';
 
 export function getLocation() {
@@ -41,4 +41,8 @@ export function getWeather(position, index) {
 
 export function addToFavourites(city) {
   return {type: ADD_TO_FAVOURITES, payload: city};
+}
+
+export function removeFromFavourites(city) {
+  return {type: REMOVE_FROM_FAVOURITES, payload: city};
 }
