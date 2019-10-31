@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import CityInfo from "./CityInfo";
+import React, { Component } from 'react';
+import CityInfo from './CityInfo';
 
 export default class Favourites extends Component {
     
     render() {
-        const cities = this.props.cities.map((element) =>               //disallow dupes
-            <div key={element.position.city.toString()}>
-                <CityInfo city={element} />
-            </div>
+        const cities = this.props.cities.map((element) =>
+                <CityInfo key={element.position.city.toString()} city={element} />
         );
         return (
-            <div>
+            <div className='favourites-cities-wrapper'>
                 {cities}
             </div>
         );

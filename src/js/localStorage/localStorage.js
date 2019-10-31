@@ -1,5 +1,3 @@
-
-
 export function loadState() {
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {

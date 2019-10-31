@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { addToFavourites } from "../actions/index";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { addToFavourites } from '../actions/index';
+import { connect } from 'react-redux';
 
 export class InputForm extends Component {
     constructor(props) {
@@ -24,9 +24,10 @@ export class InputForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className='favourites-form-wrapper'>
+                <p className='favourites-text'>Favourites</p>
                 <input type='text' value={this.state.value} onChange={this.handleChange} />
-                <input type='submit' value='Add to Favorites' />
+                <input type='submit' value='+' />
             </form>
         );
     }

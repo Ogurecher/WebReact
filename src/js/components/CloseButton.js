@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { removeFromFavourites } from "../actions/index";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { removeFromFavourites } from '../actions/index';
+import { connect } from 'react-redux';
 
 export class CloseButton extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ export class CloseButton extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type='submit' value='delete' />
+                <input type='submit' value='X' />
             </form>
         );
     }

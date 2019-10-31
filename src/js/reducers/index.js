@@ -1,4 +1,4 @@
-import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES, REMOVE_FROM_FAVOURITES } from "../constants/action-types";
+import { LOAD_WEATHER, SET_LOCATION, LOADING, THROW_ERROR, ADD_TO_FAVOURITES, REMOVE_FROM_FAVOURITES } from '../constants/action-types';
 
 const initialState = {
   weather: null,
@@ -8,6 +8,17 @@ const initialState = {
   favourites: [],
   cities: []
 };
+
+function getCities(state) {
+  const cities = state.cities.slice();
+  cities[action.index] = {
+    position: state.cities[action.index].position,
+    weather: state.cities[action.index].weather,
+    loading: 0,
+    errorMsg: null
+  }
+  return cities;
+}
 
 function rootReducer(state = initialState, action) {
 
@@ -38,15 +49,10 @@ function rootReducer(state = initialState, action) {
     });
   }
 
-  if (action.type === LOADING) {                       //deal with code copying
+  if (action.type === LOADING) {
     if (action.index !== null) {
       const cities = state.cities.slice();
-      cities[action.index] = {
-        position: state.cities[action.index].position,
-        weather: state.cities[action.index].weather,
-        loading: action.payload,
-        errorMsg: state.cities[action.index].errorMsg
-      }
+      cities[action.index].loading = action.payload;
       return Object.assign({}, state, {
         cities: cities
       });
@@ -57,16 +63,11 @@ function rootReducer(state = initialState, action) {
     });
   }
 
-  if (action.type === THROW_ERROR) {                       //deal with code copying
-
+  if (action.type === THROW_ERROR) {
     if (action.index !== null) {
       const cities = state.cities.slice();
-      cities[action.index] = {
-        position: state.cities[action.index].position,
-        weather: state.cities[action.index].weather,
-        loading: 0,
-        errorMsg: action.payload
-      }
+      cities[action.index].errorMsg = action.payload;
+      cities[action.index].loading = 0;
       return Object.assign({}, state, {
         cities: cities
       });
@@ -79,10 +80,12 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === ADD_TO_FAVOURITES) {
-    return Object.assign({}, state, {
-      favourites: state.favourites.concat([action.payload]),
-      cities: state.cities.concat({position: {city: action.payload, lat: null, lng: null}, weather: null, loading: 0, errorMsg: null })
-    });
+    if (!state.favourites.includes(action.payload)) {
+      return Object.assign({}, state, {
+        favourites: state.favourites.concat([action.payload]),
+        cities: state.cities.concat({position: {city: action.payload, lat: null, lng: null}, weather: null, loading: 0, errorMsg: null })
+      });
+    }
   }
 
   if (action.type === REMOVE_FROM_FAVOURITES) {

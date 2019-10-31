@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import CityLabel from "./CityLabel.js";
-import WeatherIcon from "./WeatherIcon.js";
-import WeatherList from "./WeatherList.js";
-/*import { getWeather } from "../actions/index";
-import { connect } from "react-redux";*/
-import { LOADING_GIF_URL } from "../constants/resources.js"
-import CloseButton from "./CloseButton.js";
+import React, { Component } from 'react';
+import CityLabel from './CityLabel.js';
+import WeatherIcon from './WeatherIcon.js';
+import WeatherList from './WeatherList.js';
+import { LOADING_GIF_URL } from '../constants/resources.js'
+import CloseButton from './CloseButton.js';
+import Temperature from './Temperature.js';
 
 export default class CityInfo extends Component {
 
@@ -16,28 +15,29 @@ export default class CityInfo extends Component {
         this.renderInfo = this.renderInfo.bind(this);
         this.renderLoading = this.renderLoading.bind(this);
     }
-
-    /*componentDidUpdate(prevProps) {
-        if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
-            this.props.getWeather(this.props.position);
-        }
-    }*/
     
     renderError(msg) {
         return (
-            <div>
+            <div className='city-info-error'>
                 <p> {msg} </p>
-                <CloseButton city={this.props.city} />
+                {!this.props.id &&
+                    <CloseButton city={this.props.city} />
+                }
             </div>
         );
     }
 
     renderInfo() {
         return (
-            <div>
-                <CityLabel weather={this.props.city.weather} />
-                <WeatherIcon weather={this.props.city.weather} />
-                <CloseButton city={this.props.city} />
+            <div id={this.props.id} className='city-info'>
+                <div className='city-info-head'>
+                    <CityLabel weather={this.props.city.weather} />
+                    <WeatherIcon weather={this.props.city.weather} />
+                    <Temperature weather={this.props.city.weather} />
+                    {!this.props.id &&
+                        <CloseButton city={this.props.city} />
+                    }
+                </div>
                 <WeatherList weather={this.props.city.weather} />
             </div>
         );
@@ -45,8 +45,8 @@ export default class CityInfo extends Component {
 
     renderLoading() {
         return (
-            <div>
-                <p> LOADING... </p>
+            <div className='city-info-loading'>
+                <p> Loading, please wait... </p>
                 <img src={LOADING_GIF_URL} />
             </div>
         );
@@ -60,7 +60,7 @@ export default class CityInfo extends Component {
         } else if (this.props.city.loading === 1) {
             return this.renderLoading();
         } else {
-            return(<p>No CityInfo</p>);                 //REMOVE DEBUG MSG
+            return(<p>No CityInfo</p>);
         }
     }
 }

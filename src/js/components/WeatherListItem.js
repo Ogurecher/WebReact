@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class WeatherListItem extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
+
     render() {
         return (
-            <p>
-                {this.props.items}
-            </p>
+            <div className='city-info-weather-list-item'>
+                <p> {this.props.label} </p>
+                <p> {this.props.content} </p>
+            </div>
+            
         );
     }
 }

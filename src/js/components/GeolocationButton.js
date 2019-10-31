@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getLocation } from "../actions/index";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getLocation } from '../actions/index';
 
 export class GeolocationButton extends Component {
     constructor(props) {
@@ -20,20 +20,18 @@ export class GeolocationButton extends Component {
 
     render() {
         return (
-            <div>
+            <div className='geolocation-wrapper'>
+                <p className='geolocation-text'>Weather here</p>
                 <form onSubmit={this.handleSubmit}>
                     <input type='submit' value = 'Get location'/>
                 </form>
-                
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        position: state.position
-    };
+    return {};
 }
 
 export default connect(

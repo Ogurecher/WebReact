@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import GeolocationButton from "./GeolocationButton.js"
-import InputForm from "./InputForm.js"
-import Favourites from "./Favourites.js";
+import React, { Component } from 'react';
+import GeolocationButton from './GeolocationButton.js'
+import InputForm from './InputForm.js'
+import Favourites from './Favourites.js';
 import CityInfo from './CityInfo';
-import { connect } from "react-redux";
-import { getWeather } from "../actions/index";
+import { connect } from 'react-redux';
+import { getWeather } from '../actions/index';
 
 export class App extends Component {
 
   componentDidMount() {
-    //add getweather for all cities
     for (let i = 0; i < this.props.cities.length; i++) {
       this.props.getWeather(this.props.cities[i].position, i);
     }
@@ -19,9 +18,9 @@ export class App extends Component {
     if (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) {
       this.props.getWeather(this.props.position, null);
     }
-    //add getweather for all cities
+
     for (let i = 0; i < this.props.cities.length; i++) {
-      if (!prevProps.cities[i] || JSON.stringify(this.props.cities[i].weather) !== JSON.stringify(prevProps.cities[i].weather)) {  //may cause problems if cities[i] does not exist in prevprops
+      if (!prevProps.cities[i] || JSON.stringify(this.props.cities[i].weather) !== JSON.stringify(prevProps.cities[i].weather)) {
         this.props.getWeather(this.props.cities[i].position, i);
       }
     }
@@ -31,7 +30,7 @@ export class App extends Component {
     return (
       <div>
         <GeolocationButton />
-        <CityInfo city={{weather: this.props.weather, loading: this.props.loading, errorMsg: this.props.errorMsg}} />
+        <CityInfo city={{weather: this.props.weather, loading: this.props.loading, errorMsg: this.props.errorMsg}} id='main' />
         <InputForm />
         <Favourites cities={this.props.cities} />
       </div>

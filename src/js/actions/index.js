@@ -30,6 +30,7 @@ export function getWeather(position, index) {
             return response.json();
           })
           .then(json => {
+            console.log(json);
             dispatch({ type: LOAD_WEATHER, payload: json, index: index });
           })
           .catch(error => {
@@ -40,7 +41,7 @@ export function getWeather(position, index) {
 }
 
 export function addToFavourites(city) {
-  return {type: ADD_TO_FAVOURITES, payload: city};
+  return {type: ADD_TO_FAVOURITES, payload: city.toLowerCase()};
 }
 
 export function removeFromFavourites(city) {
