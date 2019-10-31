@@ -34,7 +34,7 @@ export function getWeather(position, index) {
             dispatch({ type: LOAD_WEATHER, payload: json, index: index });
           })
           .catch(error => {
-            console.log("ERROR!!!!!");
+            console.log('ERROR!!!!!');
             dispatch({ type: THROW_ERROR, payload: 'Location not found', index: index });
           });
     };

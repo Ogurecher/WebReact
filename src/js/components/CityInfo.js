@@ -60,7 +60,7 @@ export default class CityInfo extends Component {
         } else if (this.props.city.loading === 1) {
             return this.renderLoading();
         } else {
-            return(<p>No CityInfo</p>);
+            return(<p></p>);
         }
     }
 }

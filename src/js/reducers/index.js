@@ -9,17 +9,6 @@ const initialState = {
   cities: []
 };
 
-function getCities(state) {
-  const cities = state.cities.slice();
-  cities[action.index] = {
-    position: state.cities[action.index].position,
-    weather: state.cities[action.index].weather,
-    loading: 0,
-    errorMsg: null
-  }
-  return cities;
-}
-
 function rootReducer(state = initialState, action) {
 
   if (action.type === LOAD_WEATHER) {
@@ -63,7 +52,7 @@ function rootReducer(state = initialState, action) {
     });
   }
 
-  if (action.type === THROW_ERROR) {
+  if (action.type === THROW_ERROR) { 
     if (action.index !== null) {
       const cities = state.cities.slice();
       cities[action.index].errorMsg = action.payload;
