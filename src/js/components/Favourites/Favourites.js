@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CityInfo from './CityInfo';
+import CityInfo from '../CityInfo/CityInfo';
+import './Favourites.css';
 
 export default class Favourites extends Component {
     

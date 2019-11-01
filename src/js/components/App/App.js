@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import GeolocationButton from './GeolocationButton.js'
-import InputForm from './InputForm.js'
-import Favourites from './Favourites.js';
-import CityInfo from './CityInfo';
+import GeolocationButton from '../GeolocationButton/GeolocationButton'
+import InputForm from '../InputForm/InputForm'
+import Favourites from '../Favourites/Favourites';
+import CityInfo from '../CityInfo/CityInfo';
 import { connect } from 'react-redux';
-import { getWeather } from '../actions/index';
+import { getWeather } from '../../actions/index';
+import './App.css'
 
 export class App extends Component {
 

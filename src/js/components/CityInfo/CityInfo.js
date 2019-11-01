@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import CityLabel from './CityLabel.js';
-import WeatherIcon from './WeatherIcon.js';
-import WeatherList from './WeatherList.js';
-import { LOADING_GIF_URL } from '../constants/resources.js'
-import CloseButton from './CloseButton.js';
-import Temperature from './Temperature.js';
+import CityLabel from '../CityLabel/CityLabel';
+import WeatherIcon from '../WeatherIcon/WeatherIcon';
+import WeatherList from '../WeatherList/WeatherList';
+import { LOADING_GIF_URL } from '../../constants/resources.js'
+import CloseButton from '../CloseButton/CloseButton';
+import Temperature from '../Temperature/Temperature';
+import './CityInfo.css';
+import './CityInfoMain.css';
 
 export default class CityInfo extends Component {
 

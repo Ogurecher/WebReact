@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { addToFavourites } from '../actions/index';
+import { addToFavourites } from '../../actions/index';
 import { connect } from 'react-redux';
+import './InputForm.css';
 
 export class InputForm extends Component {
     constructor(props) {

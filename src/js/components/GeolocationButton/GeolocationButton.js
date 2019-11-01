@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getLocation } from '../actions/index';
+import { getLocation } from '../../actions/index';
+import './GeolocationButton.css';
 
 export class GeolocationButton extends Component {
     constructor(props) {

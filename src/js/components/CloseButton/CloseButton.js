@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { removeFromFavourites } from '../actions/index';
+import { removeFromFavourites } from '../../actions/index';
 import { connect } from 'react-redux';
 
 export class CloseButton extends Component {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import WeatherListItem from './WeatherListItem.js'
+import WeatherListItem from '../WeatherListItem/WeatherListItem';
+import './WeatherList.css';
 
 export default class WeatherList extends Component {
 

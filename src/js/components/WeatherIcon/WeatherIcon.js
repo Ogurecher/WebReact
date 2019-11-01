@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WEATHER_ICON_BASE_URL } from '../constants/resources'
+import { WEATHER_ICON_BASE_URL } from '../../constants/resources'
 
 export default class WeatherIcon extends Component {
 
