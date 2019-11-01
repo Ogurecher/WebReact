@@ -73,6 +73,10 @@ body {
     flex: 0 1 100%;
 }
 
+#main > div > form > input {
+    visibility: hidden;
+}
+
 .geolocation-wrapper {
     display: flex;
     flex-direction: row;

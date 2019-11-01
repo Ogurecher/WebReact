@@ -20,9 +20,7 @@ export default class CityInfo extends Component {
         return (
             <div className='city-info-error'>
                 <p> {msg} </p>
-                {!this.props.id &&
                     <CloseButton city={this.props.city} />
-                }
             </div>
         );
     }
@@ -34,9 +32,7 @@ export default class CityInfo extends Component {
                     <CityLabel weather={this.props.city.weather} />
                     <WeatherIcon weather={this.props.city.weather} />
                     <Temperature weather={this.props.city.weather} />
-                    {!this.props.id &&
-                        <CloseButton city={this.props.city} />
-                    }
+                    <CloseButton city={this.props.city} />
                 </div>
                 <WeatherList weather={this.props.city.weather} />
             </div>
