@@ -5,7 +5,7 @@ import Favourites from '../Favourites/Favourites';
 import CityInfo from '../CityInfo/CityInfo';
 import { connect } from 'react-redux';
 import { getWeather } from '../../actions/index';
-import './App.css'
+import './App.css';
 
 export class App extends Component {
 
@@ -33,7 +33,7 @@ export class App extends Component {
         <GeolocationButton />
         <CityInfo city={{weather: this.props.weather, loading: this.props.loading, errorMsg: this.props.errorMsg}} id='main' />
         <InputForm />
-        <Favourites cities={this.props.cities} />
+        <Favourites cities={this.props.cities} favourites={this.props.favourites} />
       </div>
     );
   }
@@ -46,7 +46,8 @@ function mapStateToProps(state) {
     weather: state.weather,
     loading: state.loading,
     errorMsg: state.errorMsg,
-    cities: state.cities
+    cities: state.cities,
+    favourites: state.favourites
   };
 }
 

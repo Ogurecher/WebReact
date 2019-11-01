@@ -78,9 +78,10 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === REMOVE_FROM_FAVOURITES) {
-    const newCities = state.cities.filter((city) => {
+    /*const newCities = state.cities.filter((city) => {
       return city.position.city !== action.payload;
-    });
+    });*/
+    const newCities = state.cities.slice();
     const newFavourites = state.favourites.filter((favourite) => {
       return favourite !== action.payload;
     });
