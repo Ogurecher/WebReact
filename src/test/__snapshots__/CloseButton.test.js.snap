@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CloseButton snapshot renders 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    type="submit"
+    value="X"
+  />
+</form>
+`;

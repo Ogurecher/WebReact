@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favourites snapshot renders with empty favourites 1`] = `
+<div
+  className="favourites-cities-wrapper"
+/>
+`;
+
+exports[`Favourites snapshot renders with non-empty favourites 1`] = `
+<div
+  className="favourites-cities-wrapper"
+>
+  <div
+    className="city-info"
+  >
+    <div
+      className="city-info-head"
+    >
+      <p>
+         
+        London
+         
+      </p>
+      <img
+        src="http://openweathermap.org/img/wn/50n@2x.png"
+      />
+      <p>
+         
+        °C 
+      </p>
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          type="submit"
+          value="X"
+        />
+      </form>
+    </div>
+    <div
+      className="city-info-weather-list"
+    >
+      <div
+        className="city-info-weather-list-item"
+      >
+        <p>
+           
+          Wind
+           
+        </p>
+        <p>
+           
+          winddegdeg
+          ; windspd m/s
+           
+        </p>
+      </div>
+      <div
+        className="city-info-weather-list-item"
+      >
+        <p>
+           
+          Clouds
+           
+        </p>
+        <p>
+           
+          desc
+           
+        </p>
+      </div>
+      <div
+        className="city-info-weather-list-item"
+      >
+        <p>
+           
+          Pressure
+           
+        </p>
+        <p>
+           
+          pressure hpa
+           
+        </p>
+      </div>
+      <div
+        className="city-info-weather-list-item"
+      >
+        <p>
+           
+          Humidity
+           
+        </p>
+        <p>
+           
+          humidity%
+           
+        </p>
+      </div>
+      <div
+        className="city-info-weather-list-item"
+      >
+        <p>
+           
+          Coordinates
+           
+        </p>
+        <p>
+           
+          [lat
+          ; lon]
+           
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

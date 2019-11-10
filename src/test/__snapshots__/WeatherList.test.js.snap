@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherList snapshot renders 1`] = `
+<div
+  className="city-info-weather-list"
+>
+  <div
+    className="city-info-weather-list-item"
+  >
+    <p>
+       
+      Wind
+       
+    </p>
+    <p>
+       
+      winddegdeg
+      ; windspd m/s
+       
+    </p>
+  </div>
+  <div
+    className="city-info-weather-list-item"
+  >
+    <p>
+       
+      Clouds
+       
+    </p>
+    <p>
+       
+      desc
+       
+    </p>
+  </div>
+  <div
+    className="city-info-weather-list-item"
+  >
+    <p>
+       
+      Pressure
+       
+    </p>
+    <p>
+       
+      pressure hpa
+       
+    </p>
+  </div>
+  <div
+    className="city-info-weather-list-item"
+  >
+    <p>
+       
+      Humidity
+       
+    </p>
+    <p>
+       
+      humidity%
+       
+    </p>
+  </div>
+  <div
+    className="city-info-weather-list-item"
+  >
+    <p>
+       
+      Coordinates
+       
+    </p>
+    <p>
+       
+      [lat
+      ; lon]
+       
+    </p>
+  </div>
+</div>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherListItem snapshot renders 1`] = `
+<div
+  className="city-info-weather-list-item"
+>
+  <p>
+     
+    Wind
+     
+  </p>
+  <p>
+     
+    10deg
+    ; 10 m/s
+     
+  </p>
+</div>
+`;

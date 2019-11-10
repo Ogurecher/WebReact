@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshot renders 1`] = `
+<div>
+  <div
+    className="geolocation-wrapper"
+  >
+    <p
+      className="geolocation-text"
+    >
+      Weather here
+    </p>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        type="submit"
+        value="Get location"
+      />
+    </form>
+  </div>
+  <p />
+  <form
+    className="favourites-form-wrapper"
+    onSubmit={[Function]}
+  >
+    <p
+      className="favourites-text"
+    >
+      Favourites
+    </p>
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <input
+      type="submit"
+      value="+"
+    />
+  </form>
+  <div
+    className="favourites-cities-wrapper"
+  >
+    <p />
+  </div>
+</div>
+`;

@@ -30,11 +30,9 @@ export function getWeather(position, index) {
             return response.json();
           })
           .then(json => {
-            console.log(json);
             dispatch({ type: LOAD_WEATHER, payload: json, index: index });
           })
           .catch(error => {
-            console.log('ERROR!!!!!');
             dispatch({ type: THROW_ERROR, payload: 'Location not found', index: index });
           });
     };

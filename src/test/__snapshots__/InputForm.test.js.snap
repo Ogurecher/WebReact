@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputForm snapshot renders 1`] = `
+<form
+  className="favourites-form-wrapper"
+  onSubmit={[Function]}
+>
+  <p
+    className="favourites-text"
+  >
+    Favourites
+  </p>
+  <input
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="+"
+  />
+</form>
+`;

@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CityInfo snapshot renders error 1`] = `
+<div
+  className="city-info-error"
+>
+  <p>
+     
+    Location not found
+     
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      type="submit"
+      value="X"
+    />
+  </form>
+</div>
+`;
+
+exports[`CityInfo snapshot renders info 1`] = `
+<div
+  className="city-info"
+>
+  <div
+    className="city-info-head"
+  >
+    <p>
+       
+      London
+       
+    </p>
+    <img
+      src="http://openweathermap.org/img/wn/50n@2x.png"
+    />
+    <p>
+       
+      °C 
+    </p>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        type="submit"
+        value="X"
+      />
+    </form>
+  </div>
+  <div
+    className="city-info-weather-list"
+  >
+    <div
+      className="city-info-weather-list-item"
+    >
+      <p>
+         
+        Wind
+         
+      </p>
+      <p>
+         
+        winddegdeg
+        ; windspd m/s
+         
+      </p>
+    </div>
+    <div
+      className="city-info-weather-list-item"
+    >
+      <p>
+         
+        Clouds
+         
+      </p>
+      <p>
+         
+        desc
+         
+      </p>
+    </div>
+    <div
+      className="city-info-weather-list-item"
+    >
+      <p>
+         
+        Pressure
+         
+      </p>
+      <p>
+         
+        pressure hpa
+         
+      </p>
+    </div>
+    <div
+      className="city-info-weather-list-item"
+    >
+      <p>
+         
+        Humidity
+         
+      </p>
+      <p>
+         
+        humidity%
+         
+      </p>
+    </div>
+    <div
+      className="city-info-weather-list-item"
+    >
+      <p>
+         
+        Coordinates
+         
+      </p>
+      <p>
+         
+        [lat
+        ; lon]
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CityInfo snapshot renders loading 1`] = `
+<div
+  className="city-info-loading"
+>
+  <p>
+     Loading, please wait... 
+  </p>
+  <img
+    src="https://miro.medium.com/max/489/0*cWpsf9D3g346Va20.gif"
+  />
+</div>
+`;
